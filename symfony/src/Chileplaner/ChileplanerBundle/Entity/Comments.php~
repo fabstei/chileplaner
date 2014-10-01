@@ -1,0 +1,73 @@
+<?php
+
+namespace Chileplaner\ChileplanerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Comments
+ *
+ * @ORM\Table(name="comments", indexes={@ORM\Index(name="event_id", columns={"event_id"}), @ORM\Index(name="person_id", columns={"person_id"})})
+ * @ORM\Entity
+ */
+class Comments
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_on", type="datetime", nullable=false)
+     */
+    private $createdOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_on", type="datetime", nullable=true)
+     */
+    private $updatedOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="deleted_on", type="datetime", nullable=true)
+     */
+    private $deletedOn;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text", nullable=true)
+     */
+    private $text;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Chileplaner\ChileplanerBundle\Entity\Events
+     *
+     * @ORM\ManyToOne(targetEntity="Chileplaner\ChileplanerBundle\Entity\Events")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     * })
+     */
+    private $event;
+
+    /**
+     * @var \Chileplaner\ChileplanerBundle\Entity\People
+     *
+     * @ORM\ManyToOne(targetEntity="Chileplaner\ChileplanerBundle\Entity\People")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     * })
+     */
+    private $person;
+
+
+}

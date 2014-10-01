@@ -1,0 +1,63 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Events list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Start</th>
+                <th>End</th>
+                <th>Recur</th>
+                <th>Recurend</th>
+                <th>Title</th>
+                <th>Privatedescription</th>
+                <th>Createdon</th>
+                <th>Updatedon</th>
+                <th>Type</th>
+                <th>Preparationtime</th>
+                <th>Cleaningtime</th>
+                <th>Publicdescription</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('events_show', { 'id': entity.id }) }}">{{ entity.start|date('Y-m-d H:i:s') }}</a></td>
+                <td>{% if entity.end %}{{ entity.end|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.recur }}</td>
+                <td>{% if entity.recurEnd %}{{ entity.recurEnd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.title }}</td>
+                <td>{{ entity.privateDescription }}</td>
+                <td>{% if entity.createdOn %}{{ entity.createdOn|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.updatedOn %}{{ entity.updatedOn|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.type }}</td>
+                <td>{{ entity.preparationTime }}</td>
+                <td>{{ entity.cleaningTime }}</td>
+                <td>{{ entity.publicDescription }}</td>
+                <td>{{ entity.id }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('events_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('events_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('events_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

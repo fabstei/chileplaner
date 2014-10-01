@@ -1,0 +1,130 @@
+<?php
+
+namespace Chileplaner\ChileplanerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProfilesFields
+ *
+ * @ORM\Table(name="profiles_fields", indexes={@ORM\Index(name="varname", columns={"varname", "widget", "visible"})})
+ * @ORM\Entity
+ */
+class ProfilesFields
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="varname", type="string", length=50, nullable=false)
+     */
+    private $varname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="field_type", type="string", length=50, nullable=false)
+     */
+    private $fieldType;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="field_size", type="string", length=15, nullable=false)
+     */
+    private $fieldSize;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="field_size_min", type="string", length=15, nullable=false)
+     */
+    private $fieldSizeMin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="required", type="integer", nullable=false)
+     */
+    private $required;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="match", type="string", length=255, nullable=false)
+     */
+    private $match;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="range", type="string", length=255, nullable=false)
+     */
+    private $range;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="error_message", type="string", length=255, nullable=false)
+     */
+    private $errorMessage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="other_validator", type="string", length=5000, nullable=false)
+     */
+    private $otherValidator;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="default", type="string", length=255, nullable=false)
+     */
+    private $default;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="widget", type="string", length=255, nullable=false)
+     */
+    private $widget;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="widgetparams", type="string", length=5000, nullable=false)
+     */
+    private $widgetparams;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="position", type="integer", nullable=false)
+     */
+    private $position;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="visible", type="integer", nullable=false)
+     */
+    private $visible;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}

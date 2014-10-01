@@ -1,0 +1,108 @@
+<?php
+
+namespace Chileplaner\ChileplanerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Locations
+ *
+ * @ORM\Table(name="locations", indexes={@ORM\Index(name="responsible_person", columns={"responsible_person"}), @ORM\Index(name="group", columns={"location_group"}), @ORM\Index(name="group_id", columns={"group_id"})})
+ * @ORM\Entity
+ */
+class Locations
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=100, nullable=true)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="zip", type="string", length=10, nullable=true)
+     */
+    private $zip;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=50, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="x_coord", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $xCoord;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="y_coord", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $yCoord;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="location_group", type="string", length=50, nullable=true)
+     */
+    private $locationGroup;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripiton", type="text", nullable=true)
+     */
+    private $descripiton;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="directions", type="text", nullable=true)
+     */
+    private $directions;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Chileplaner\ChileplanerBundle\Entity\People
+     *
+     * @ORM\ManyToOne(targetEntity="Chileplaner\ChileplanerBundle\Entity\People")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="responsible_person", referencedColumnName="id")
+     * })
+     */
+    private $responsiblePerson;
+
+    /**
+     * @var \Chileplaner\ChileplanerBundle\Entity\Groups
+     *
+     * @ORM\ManyToOne(targetEntity="Chileplaner\ChileplanerBundle\Entity\Groups")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="group_id", referencedColumnName="id")
+     * })
+     */
+    private $group;
+
+
+}

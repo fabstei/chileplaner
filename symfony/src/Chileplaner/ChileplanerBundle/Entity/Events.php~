@@ -1,0 +1,149 @@
+<?php
+
+namespace Chileplaner\ChileplanerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Events
+ *
+ * @ORM\Table(name="events", indexes={@ORM\Index(name="start", columns={"start"}), @ORM\Index(name="end", columns={"end"}), @ORM\Index(name="created_by", columns={"created_by"}), @ORM\Index(name="updated_by", columns={"updated_by"}), @ORM\Index(name="responsible_person", columns={"responsible_person"}), @ORM\Index(name="category_id", columns={"category_id"})})
+ * @ORM\Entity
+ */
+class Events
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start", type="datetime", nullable=false)
+     */
+    private $start;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end", type="datetime", nullable=true)
+     */
+    private $end;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="recur", type="string", length=100, nullable=true)
+     */
+    private $recur;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="recur_end", type="date", nullable=true)
+     */
+    private $recurEnd;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=50, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="private_description", type="text", nullable=true)
+     */
+    private $privateDescription;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_on", type="datetime", nullable=true)
+     */
+    private $createdOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_on", type="datetime", nullable=true)
+     */
+    private $updatedOn;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="type", type="boolean", nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="preparation_time", type="integer", nullable=true)
+     */
+    private $preparationTime;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cleaning_time", type="integer", nullable=true)
+     */
+    private $cleaningTime;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="public_description", type="text", nullable=true)
+     */
+    private $publicDescription;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Chileplaner\ChileplanerBundle\Entity\Users
+     *
+     * @ORM\ManyToOne(targetEntity="Chileplaner\ChileplanerBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="updated_by", referencedColumnName="id")
+     * })
+     */
+    private $updatedBy;
+
+    /**
+     * @var \Chileplaner\ChileplanerBundle\Entity\People
+     *
+     * @ORM\ManyToOne(targetEntity="Chileplaner\ChileplanerBundle\Entity\People")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="responsible_person", referencedColumnName="id")
+     * })
+     */
+    private $responsiblePerson;
+
+    /**
+     * @var \Chileplaner\ChileplanerBundle\Entity\Users
+     *
+     * @ORM\ManyToOne(targetEntity="Chileplaner\ChileplanerBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id")
+     * })
+     */
+    private $createdBy;
+
+    /**
+     * @var \Chileplaner\ChileplanerBundle\Entity\Categories
+     *
+     * @ORM\ManyToOne(targetEntity="Chileplaner\ChileplanerBundle\Entity\Categories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     */
+    private $category;
+
+
+}

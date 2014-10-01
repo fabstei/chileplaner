@@ -1,0 +1,122 @@
+<?php
+
+namespace Chileplaner\ChileplanerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * People
+ *
+ * @ORM\Table(name="people", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="stand_in", columns={"stand_in"})})
+ * @ORM\Entity
+ */
+class People
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=30, nullable=true)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=30, nullable=true)
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=100, nullable=true)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="zip", type="string", length=10, nullable=true)
+     */
+    private $zip;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=50, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=100, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=15, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mobile", type="string", length=15, nullable=true)
+     */
+    private $mobile;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="iban", type="string", length=30, nullable=true)
+     */
+    private $iban;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bic", type="string", length=15, nullable=true)
+     */
+    private $bic;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bank", type="string", length=100, nullable=true)
+     */
+    private $bank;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Chileplaner\ChileplanerBundle\Entity\Users
+     *
+     * @ORM\ManyToOne(targetEntity="Chileplaner\ChileplanerBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \Chileplaner\ChileplanerBundle\Entity\People
+     *
+     * @ORM\ManyToOne(targetEntity="Chileplaner\ChileplanerBundle\Entity\People")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="stand_in", referencedColumnName="id")
+     * })
+     */
+    private $standIn;
+
+
+}

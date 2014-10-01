@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Calendar</h1>
+	<div id="calendar"></div>
+	<div id="options">
+		<input type="checkbox" id="mod_own_events" /><label ref="mod_own_events">Nur eigene Veranstaltungen</label>
+		<input type="checkbox" id="mod_private" /><label ref="mod_private">Interne Veranstaltungn</label>
+		<h3>Kategorien</h3>
+		{% for category in categories %}
+		<input type="checkbox" id="cat_{{ category.id }}" class="cat" />
+		<label for="cat_{{ category.id }}">{{ category.name }}</label>
+		<div class="colormarker" style="background-color:#{{ category.color }}"></div>
+		{% endfor %}
+	</div>
+{% endblock %}
+
+{% block stylesheets %}
+<link href="{{ asset('fullcalendar/fullcalendar.min.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('fullcalendar/fullcalendar.min.js') }}"></script>
+	<script src="{{ asset('fullcalendar/lang/de.js') }}" /></script>
+	<script src="{{ asset('fullcalendar/lib/moment.min.js') }}" /></script>
+	<script src="{{ asset('fullcalendar/lib/jquery.min.js') }}" /></script>
+	
+	<script>
+	$('#calendar').fullCalendar({
+        events: '{{url('_eventprovider')}}',
+        firstDay: 1,
+        fixedWeekCount: false,
+        lang: 'de',
+        header: {
+        	left: 'today prev,next',
+        	center: 'title',
+        	right: 'month,agendaWeek'
+        },
+        editable: false,
+    });
+    </script>
+{% endblock %}
+

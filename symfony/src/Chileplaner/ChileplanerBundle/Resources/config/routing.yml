@@ -1,0 +1,6 @@
+chileplaner_chileplaner_homepage:
+    path:     /
+    defaults: { _controller: ChileplanerChileplanerBundle:Default:index }
+events_controller:
+    resource: "@ChileplanerChileplanerBundle/Controller/EventsController.php"
+    type: annotation

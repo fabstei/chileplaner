@@ -1,0 +1,66 @@
+<?php
+
+namespace Chileplaner\ChileplanerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CategoriesPeople
+ *
+ * @ORM\Table(name="categories_people", indexes={@ORM\Index(name="category_id", columns={"category_id"}), @ORM\Index(name="person_id", columns={"person_id"})})
+ * @ORM\Entity
+ */
+class CategoriesPeople
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="can_crud_events", type="boolean", nullable=false)
+     */
+    private $canCrudEvents;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="can_add_people", type="boolean", nullable=false)
+     */
+    private $canAddPeople;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="can_remove_people", type="boolean", nullable=false)
+     */
+    private $canRemovePeople;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Chileplaner\ChileplanerBundle\Entity\Categories
+     *
+     * @ORM\ManyToOne(targetEntity="Chileplaner\ChileplanerBundle\Entity\Categories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     */
+    private $category;
+
+    /**
+     * @var \Chileplaner\ChileplanerBundle\Entity\People
+     *
+     * @ORM\ManyToOne(targetEntity="Chileplaner\ChileplanerBundle\Entity\People")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     * })
+     */
+    private $person;
+
+
+}

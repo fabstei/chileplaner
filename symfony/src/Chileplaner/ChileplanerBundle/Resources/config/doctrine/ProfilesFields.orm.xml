@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Chileplaner\ChileplanerBundle\Entity\ProfilesFields" table="profiles_fields">
+    <indexes>
+      <index name="varname" columns="varname,widget,visible"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="varname" type="string" column="varname" length="50" nullable="false"/>
+    <field name="title" type="string" column="title" length="255" nullable="false"/>
+    <field name="fieldType" type="string" column="field_type" length="50" nullable="false"/>
+    <field name="fieldSize" type="string" column="field_size" length="15" nullable="false"/>
+    <field name="fieldSizeMin" type="string" column="field_size_min" length="15" nullable="false"/>
+    <field name="required" type="integer" column="required" nullable="false"/>
+    <field name="match" type="string" column="match" length="255" nullable="false"/>
+    <field name="range" type="string" column="range" length="255" nullable="false"/>
+    <field name="errorMessage" type="string" column="error_message" length="255" nullable="false"/>
+    <field name="otherValidator" type="string" column="other_validator" length="5000" nullable="false"/>
+    <field name="default" type="string" column="default" length="255" nullable="false"/>
+    <field name="widget" type="string" column="widget" length="255" nullable="false"/>
+    <field name="widgetparams" type="string" column="widgetparams" length="5000" nullable="false"/>
+    <field name="position" type="integer" column="position" nullable="false"/>
+    <field name="visible" type="integer" column="visible" nullable="false"/>
+  </entity>
+</doctrine-mapping>

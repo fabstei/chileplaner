@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Chileplaner\ChileplanerBundle\Entity\Events" table="events">
+    <indexes>
+      <index name="start" columns="start"/>
+      <index name="end" columns="end"/>
+      <index name="created_by" columns="created_by"/>
+      <index name="updated_by" columns="updated_by"/>
+      <index name="responsible_person" columns="responsible_person"/>
+      <index name="category_id" columns="category_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="start" type="datetime" column="start" nullable="false"/>
+    <field name="end" type="datetime" column="end" nullable="true"/>
+    <field name="recur" type="string" column="recur" length="100" nullable="true"/>
+    <field name="recurEnd" type="date" column="recur_end" nullable="true"/>
+    <field name="title" type="string" column="title" length="50" nullable="true"/>
+    <field name="privateDescription" type="text" column="private_description" nullable="true"/>
+    <field name="createdOn" type="datetime" column="created_on" nullable="true"/>
+    <field name="updatedOn" type="datetime" column="updated_on" nullable="true"/>
+    <field name="type" type="boolean" column="type" nullable="false"/>
+    <field name="preparationTime" type="integer" column="preparation_time" nullable="true"/>
+    <field name="cleaningTime" type="integer" column="cleaning_time" nullable="true"/>
+    <field name="publicDescription" type="text" column="public_description" nullable="true"/>
+    <many-to-one field="updatedBy" target-entity="Users">
+      <join-columns>
+        <join-column name="updated_by" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="responsiblePerson" target-entity="People">
+      <join-columns>
+        <join-column name="responsible_person" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="createdBy" target-entity="Users">
+      <join-columns>
+        <join-column name="created_by" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="category" target-entity="Categories">
+      <join-columns>
+        <join-column name="category_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

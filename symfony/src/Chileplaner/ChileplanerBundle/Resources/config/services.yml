@@ -1,0 +1,4 @@
+services:
+#    chileplaner_chileplaner.example:
+#        class: Chileplaner\ChileplanerBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
