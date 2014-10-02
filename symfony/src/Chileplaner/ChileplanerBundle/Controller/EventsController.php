@@ -54,7 +54,7 @@ class EventsController extends Controller
 	
 	/**
 	 * Renders the Fullcalendar View
-	 * @Route("/calendar", name="events_calendar"
+	 * @Route("/calendar", name="events_calendar")
 	 * @Template("ChileplanerChileplanerBundle:Events:calendar.html.twig")
 	 */
 	public function calendarAction(){
